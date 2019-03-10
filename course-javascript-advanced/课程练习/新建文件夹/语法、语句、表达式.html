@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//ECMAScript 是一个语言标准，JavaScript是完全基于ECMAScript实现的脚本语言
+	//ES5是ECMAScript5缩写，当前主流的版本ES5 ES6
+	//ES5标准下，没有块级作用域
+	if(false){
+		var name="zhangsan";
+	}
+	console.log(name);
+
+
+	for(var i=0;i<3;i++){
+
+	}
+	console.log(i);
+	//全局的，对所有页面js代码均应用严格模式
+	'use strict'
+
+	function fn1(){
+		//函数范围内起作用
+		'use strict'
+	}
+	//非严格模式下，不使用var来显示声明变量，则该变量自动转化为全局变量
+	function fn2(){
+		username="lisi";
+	}
+
+	fn2();
+	console.log(username);
+
+
+    //非严格模式下，普通函数里面，this指向全局对象window
+	function fn3(){
+		console.log(this);
+	}
+	fn3();
+	//严格模式下，在普通函数内，this指向undefined
+	function fn4(){
+		'use strict'
+		console.log(this);
+	}
+	fn4();
+
+
+	function judge(){
+		var result=(this===undefined?true:false);
+		return result;
+	}
+	if(judge()){
+		console.log("严格模式");
+	}
+	else{
+		console.log("非严格模式");
+	}
+
+    // 'use strict'
+	var str="abcdef";
+	str.length=1;
+	console.log(str.length);
+	// var str="abcdef";
+	// var strObject=new String(str);
+	// strObject.length=1;
+	// 
+	
+    //switch的值和case的值进行的是全等的比较，值和类型需要均相等
+    var index=1;
+    switch(index){
+    	case 1:
+    	    console.log("星期一");
+    	    break;
+        case 2:
+            console.log("星期二");
+    	    break;
+    	default:
+            console.log("没有该选项");
+    	    break;
+    }
+
+
+    var index2=1;
+    switch(index){
+    	case 1:
+    	case 2:
+    	case 3:
+    	case 4:
+    	case 5:
+    	     console.log("工作日");
+    	     break;
+    	case 6:
+    	case 7:
+    	     console.log("休息日");
+    	     break;
+    }
+</script>
+</html>

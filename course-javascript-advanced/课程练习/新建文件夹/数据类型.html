@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	 <script>
+	 //包装对象
+	 var num1=20.375;
+	 console.log(num1.toFixed(2));     //toFixed:保留特定位数的小数，超出部分四舍五入，返回字符串
+
+	 var numobject=new Number(num1);
+	 console.log(numobject);
+	 console.log(numobject.toFixed());
+
+
+     //toPrecision数字位数小于数的蒸熟位写成指数形式，大于或等于数字位数，四舍五入截取
+	 var num2=12345.6789;
+	 console.log(num2.toPrecision(1));      //1e+4表示1加十的四次方
+	 console.log(num2.toPrecision(2));
+	 console.log(num2.toPrecision(3));
+	 console.log(num2.toPrecision(4));
+	 console.log(num2.toPrecision(5));
+	 console.log(num2.toPrecision(6));
+
+
+	 //字符类型
+	 var str="ab*cd*efab";
+	 //找到下标为n的字符
+	 console.log(str.charAt(3));
+	 //将unicode码转化为字符
+	 console.log(String.fromCharCode(97,98,99));
+	 //charCodeAt将特定索引位置的字符转化为unicode码
+     console.log(str.charCodeAt(0));
+     //截取字符串（起始位置，结束位置），如果结束位置小于0，结束位置为length+结束位置参数（倒着数)
+     console.log(str.slice(0, 3));
+     //substr(截取的起始位置，截取的长度),截取长度可以省略，表示到结束
+     console.log(str.substr(0, 3));
+     //substring(起始位置，结束位置) 截取的起始位置大于截取的结束位置，交换位置；超出0-str,length范围的，会被截断
+     console.log(str.substring(1, -1));
+     console.log(str.slice(3, 0));
+     //split(分隔符号，限定生成数组的长度)
+     console.log(str.split("*"));
+     var arr="     ab     b  ";
+     //去除无用字符
+     console.log(arr.trim());
+     //字符串拼接
+     console.log(arr.concat("def","ghi"));
+     //indexOf（查找特定的字符，查找的起始位置）返回值是字符串出现的位置，不存在返回-1
+    console.log(str.indexOf("bcdy"));
+    //lastIndexOf返回最后出现的特定字符串的位置
+    console.log(str.lastIndexOf("ab"));
+	 </script>
+</body>
+</html>
