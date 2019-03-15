@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a=45;
+	//发反写，字面量在前，变量在后
+	if(45==a){
+		console.log("判断相等");
+	}
+
+	var x=1;
+	//++x表示先运算，再输出
+	//x++表示先输出，再运算
+	//++ --自动完成数据类型的隐式转化，转化为数字类型
+	console.log(++x);
+	console.log(x++);
+	//+=不会进行类型转化
+	console.log(x+=1);
+    
+
+    //左真取右
+	console.log(10&&0);
+	//左假取左
+	console.log(undefined&&10);
+
+	//左真取左，左假取右
+	console.log(10||null);
+	console.log(null||10);
+
+
+
+	var score=78;
+	console.log((score>90&&"优")||(score>75&&"良")||(score>60&&"及格")||("不及格"));
+
+    //ES5给函数参数加默认值的处理方法
+    function sum(x,y,z){
+    	x=x||1;
+    	y=y||2;
+    	z=z||3;
+    	console.log(x,y,z);
+    	return x+y+z;
+    }
+    console.log(sum(0,0,0));
+
+    //ES6中实现设置函数参数的默认值
+    function sum1(x=1,y=2,z=3){
+    	return x+y+z;
+    }
+    console.log(sum1(4,5,6));
+</script>
+</html>

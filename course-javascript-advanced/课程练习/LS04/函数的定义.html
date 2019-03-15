@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+    max(2,3);
+	function max(a,b){
+		return a>b?a:b;
+	}
+
+	// min(2,3);    不可以放在前边
+	var min=function(x,y){
+		return x>y?y:x;
+	}
+
+    //Function(arg1,arg2,......,函数体);执行效率相对较低，但是更加灵活
+	var fn1=new Function("a","b","return a>b?a:b;");
+	fn1(2,3);
+
+    'use struct'
+	function test(){
+		console.log(this);
+	}
+	test();
+
+
+    //在对象内部方法调用，this指向调用该方法的对象
+	var obj={
+		x:0;
+		test:function(){
+			console.log(this.x);
+		}
+	}
+	obj.test();
+
+	var obja={"name":"AAA"};
+	var objb={"name":"BBB"};
+	obja.test=function(){
+		console.log(this.name);
+	}
+	obja.test();
+	//方法.call(当前对象);将方法的调用执行从原有对象切换到当前对象
+	obja.test.call(objb);
+
+    function Person(username){
+    	this.username=username;
+    	// this,sayHi=function(){
+    	// 	console.log(this.username);
+    	// }
+    }
+
+    Person.prototype.sayHi=function(){
+    	console.log(this.username);
+    }
+    var person=new Person("张三");
+    var person=new Person("李四");
+
+    function sum(x,y,z){
+    	console.log(z);
+    	return x+y+z;
+    }
+    sum(1,2);
+
+
+    //实参数量大于形参,可以使用arguments获取实参arguments类数组结构
+    function test1(){
+    	console.log(arguments);
+    	var s="";
+    	for(var i=0;i<arguments.length;i++){
+    		s+=arguments[i];
+    	}
+    	return s;
+    }
+    test1("hello","word");
+</script>
+</html>
