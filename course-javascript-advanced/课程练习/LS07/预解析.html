@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// if(true){
+	// 	var a=1;
+	// }
+	// console.log(a);
+	// if(false){
+	// 	var b=2;
+	// }
+	// console.log(b);
+
+	// function fn1(){
+	// 	console.log(b);
+	// 	var b=2;
+	// }
+	// console.log(b);
+
+	// function fn2(){
+	// 	fn3();
+	// 	function fn3(){
+	// 		console.log("hello word");
+	// 	}
+	// }
+
+	var x=1;
+	var y=2;
+	function fn(){
+		var x=3;
+		var d=4;
+		console.log(x);
+		function fna(){
+			x=5;
+			var e=6;
+		}
+		fna();
+	}
+   fn();
+
+//作用域的静态属性，只要完成函数的定义，那变量的作用域就是确定的和函数在那里调用没有关系
+   var username="jack";
+   function foo(){
+   	console.log(username);
+   }
+   function bar(){
+   	var username="bill";
+   	foo();
+   }
+   bar();
+
+   console.log(x);     //undefined
+   if(true){
+   	var x=1;
+   }
+
+
+   var userId=2;
+   document.onclick=function(){
+   	console.log(userId);
+   };
+   if(true){
+   	var userId=20;
+   };
+   (function(){
+   	   if(true){
+   	      var userId=20;
+       }
+   })()
+   for(var i=0;i<3;i++){
+   	setTimeout(function(){
+   		console.log(new Date(),i);
+   	},i*1000)
+   }
+</script>
+</html>
