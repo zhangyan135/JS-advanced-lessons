@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	//立即执行
+	(function max(x,y){
+		return x>y?x:y;
+	}(2,3));
+
+	(function min(a,b){
+		return a>b?b:a;
+	})(2,3);
+
+	var userId=2;
+	document.onclick=function(){
+		//userId=10;
+		alert(userId);
+	}
+	// (function(){
+	// 	  if(true){
+ //    	     var userId=20;    //局部变量
+ //           }
+	// })();
+
+//变量的非期望共享
+	function f(){
+		var getNum=[];
+		for(var i=0;i<10;i++){
+			getNum[i]=function(){
+				return i;
+			}
+			function fn(){
+				console.log(i);
+			}
+		}
+		fn();
+		return getNum;
+	}
+	var tmp=f();
+	tmp[0]();
+  
+//形成独立的作用域，不共享 
+  function f1(){
+		var getNum=[];
+		for(var i=0;i<10;i++){
+			(function(j){
+				getNum[j]=function(){
+					return j;
+				}				
+			})(i)
+		}
+		return getNum;
+	}
+	var tmp1=f1();
+	tmp1[0]();
+
+	//函数的作用域，在定义的时候就是确定的；函数内部的变量，在有些时候需要等到函数执行时候来确定
+	// function fn1(){
+	// 	var arr=[];
+	// 	for(var i=0;i<10;i++){
+	// 		arr[i]=function(){
+	// 			return i;
+	// 		}
+	// 	}
+	// 	return arr1;
+	// }
+	// var result=fn1();
+	// result[0]();
+
+	for(var i=0;i<3;i++){
+		(function(j){
+			setTimeout(function(){
+			console.log(new Date(),j);
+		},1000*i);
+	})(i);
+}
+	</script>
+</body>
+</html>

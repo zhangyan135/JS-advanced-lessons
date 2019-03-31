@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div>
+   <span>导航0</span>
+   <span>导航1</span>
+   <span>导航2</span>
+   <span>导航3</span>
+   <div class="contents">
+	    <div class="show">导航0内容</div>
+   </div>
+</div>
+	<script>
+		var spanList=document.getElementsByTagName("span");
+	    var show=document.getElementsByClassName("show")[0];
+	    for(var i=0;i<spanList.length;i++){
+	    	(function(j){
+	    		 spanList[j].onclick=function(){
+		  	     show.innerHTML="导航"+j+"内容";
+		        }
+		  })(i);		 
+	   }
+	</script>
+</body>
+</html>
