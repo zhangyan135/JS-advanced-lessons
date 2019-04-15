@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// var obj1={z:1};
+	// var obj2=Object.create(obj1);
+	// console.log(obj2.__proto__);
+	// console.log(obj2.__proto__.__proto__);
+
+	// Object.prototype.sayHello=function(){
+	// 	console.log("hello world");
+	// }
+	// obj2.sayHello();      //先看obj2是否有sayHello,没有去一级原型面上找
+
+	function Person(username,age){
+		this.username=username;
+		this.age=age;
+		this.say=function(){
+			console.log("hello world");
+		}
+	}
+	Person.prototype.say=function(){
+		console.log("hello world");
+	}
+	var person=new Person("zhangsan",20);
+	var person1=new Person("lisi",18);
+	// person.say();
+	// person1.say();
+	console.log(person.__proto__==Person.prototype);
+	console.log(person.__proto__.__proto__==Object.prototype);
+	console.log(person.__proto__.__proto__.__proto__==Object.prototype.__proto__);
+	console.log(Person.prototype.constructor==Person);
+	console.log(Object.prototype.constructor==Object);
+	//console.log(person,person1);
+	//
+	//
+	//定义一个car对象，拥有属性height，width，weight；再定义一个smallcar对象，自身具有color、seatnum属性；让smallcar继承car的所有属性，使用create方法和构造函数实现
+	var car={
+		height:150,
+		width:200,
+		weight:2000
+	};
+	var smallcar=Object.create(car);
+	smallcar.color="red";
+	smallcar.seatnum=4;
+	console.log(smallcar.color);
+	// function Car(height,width,weight){
+	// 	this.height=height;
+	// 	this.width=width;
+	// 	this.weight=weight;
+	// }
+	function Createsmallcar(color,seatnum){
+		this.color=color;
+		this.seatnum=seatnum;
+	}
+	Createsmallcar.prototype=car;
+	var smallcar=new Createsmallcar("red",4);
+	console.log(smallcar.__proto__==Createsmallcar.prototype);
+	console.log(smallcar.width,smallcar.color);
+</script>
+</html>

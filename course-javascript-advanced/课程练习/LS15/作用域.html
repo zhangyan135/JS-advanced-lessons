@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="div1"></div>
+	<script>
+	//作用域链
+	var div1=document.getElementById("div1");
+	function show(el){
+		(function(el){
+			document.onclick=function(){
+		       el.innerHTML="hello word";
+	   }
+		})(el)		
+	}
+	show(div1);
+
+	// (function(w,d){
+	// 	d.getElementById("div1").onclick=function()
+	// })(window,document)
+
+
+
+
+	console.log("小明回家");
+	var xx=["书桌","书包","铅笔盒"];
+	console.log("在家-做作业");
+	function goToStore(){
+		var yy=["文具店老板","出售的文具"];
+		console.log("在文具店-买文具中");
+		console.log("在文具店-买文具中 发现没带钱");
+		goToBank();
+		console.log("在文具店-买好文具  返回家");
+	}
+	function goToBank(){
+		var zz=["银行职员","柜员机"];
+		console.log("在银行-去取钱  返回文具店");
+	}
+	console.log("在家-做作业中 发现笔没油了");
+	goToStore();
+	console.log("在家-继续做作业");
+	</script>
+</body>
+</html>

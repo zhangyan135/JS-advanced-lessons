@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// var obj={x:5};
+	// Object.defineProperty(obj,"y",{
+	// 	configurable:true,
+	// 	writable:false,
+	// 	enumerable:true,
+	// 	value:6
+	// });
+	// Object.getOwnPropertyDescriptor(obj,"x");
+
+	// var obj1={z:1};
+	// Object.defineProperties(obj1,{
+	// 	x:{value:2,enumerable:true,configurable:true,writable:true},
+	// 	y:{},
+	// 	z:{
+	// 		get(){
+	// 			return this._z;
+	// 		},
+	// 		set(val){
+	// 			this._z=val;
+	// 		}
+	// 	}
+	// });
+
+	var o1={x:1};
+	var o2=Object.create(o1);
+	console.log(o2);
+	console.log(o2.__protr__==o1);
+	//往o2自身上添加属性x
+	o2.x=2;
+	//delete只能删除自身所具有的属性
+	delete o2.x;
+	o2.__proto__.x=3;
+	console.log(o1.x);
+	console.log(o2.x);
+	o2.hasOwnProperty('z');            //false
+
+
+	var obja={x:1};
+	var objb=Object.create(obja);
+	console.log(objb.__proto__);
+	console.log(objb.__proto__.__proto__);   //等价于console.log(Object.prototype);
+		
+    console.log(objb.__proto__.__proto__.__proto__);  //原型链的尽头
+	var proObj={
+		z:3
+	};
+	var obj=Object.create(proObj);
+	obj.x=1;
+	obj.y=2;
+	console.log(obj.x);
+	console.log(obj.y);
+	console.log(obj.z);
+</script>
+</html>
